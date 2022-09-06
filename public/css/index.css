@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    background-color: #DBE0E7;
+
+  }
+
+  input, button, a {
+    font-family: inherit;
+  }
+
+  .nav {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    align-items: center;
+    background-color: white;
+  }
+
+  .logo {
+    height: 56px;
+    width: 100px;
+    margin-left: 10px;
+  }
+
+  .home-icon {
+    all: unset;
+    display: flex;
+    margin-left: 30px;
+    margin-right: 30px;
+    cursor: pointer;
+
+  }
+
+  .home-icon2 {
+    font-size: 20px;
+    
+  }
+
+  .home-text {
+    margin-left: 10px;
+
+  }
+
+  .search-bar {
+    display: flex;
+    background-color: #F7F6F8;
+    margin-left: 10px;
+    padding: 5px 10px;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid #EDEFF1;
+  }
+
+  .search-bar:hover {
+    background-color: white;
+    border: 1px solid #0079D3;
+
+  }
+
+  .search-bar:focus-within {
+    background-color: white;
+    border: 1px solid #0079D3;
+
+  }
+
+  .search-icon {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+
+  .search-form {
+    display: flex;
+  }
+
+  .search-input {
+    all: unset;
+    width: 400px;
+  }
+
+  .plus-icon {
+    font-size: 20px;
+    margin-right: 5px;
+  }
+
+  .create-post {
+    display: flex;
+    align-items: center;
+    margin-left: 200px;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 5px;
+  }
+
+  .create-post:hover {
+    background-color: rgba(26,26,27,0.1);
+  }
+
+  .user-info {
+    display: flex;
+    margin-left: 20px;
+  }
+
+  .avatar-img {
+    height: 40px;
+  }
+
+  .karma {
+    font-size: 12px;
+  }
+
+  .karma-icon {
+    font-size: 13px;
+    margin-right: 3px;
+    color: orange;
+  }
+
+  .user-name-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+  }
