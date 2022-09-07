@@ -135,3 +135,163 @@
     align-items: center;
     margin-left: 10px;
   }
+
+  .main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 85px;
+    height: 100%;
+  }
+
+  .posts-section {
+    width: 48%;
+  }
+
+  .side-feed {
+    width: 22%;
+    height: 100vh;
+
+  }
+
+  .create-post-section {
+    display: flex;
+    background-color: white;
+    align-items: center;
+    border-radius: 5px;
+  }
+  
+  .create-post-bar {
+    margin: 20px 10px;
+  }
+
+  .create-post-input {
+    width: 430px;
+  }
+
+  .post-avatar {
+    margin-left: 15px;
+  }
+
+  .both-icons {
+    margin-left: 10px;
+    font-size: 25px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+
+  }
+
+  .both-icons:hover {
+    background-color: rgba(26,26,27,0.1);
+  }
+
+  .feed-options-section {
+    margin-top: 15px;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    height: 60px;
+    align-items: center;
+  }
+
+  .option {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  .option:hover {
+    background-color: rgba(26,26,27,0.1);
+  }
+  
+  .option-icon {
+    margin-right: 10px;
+  }
+
+  .post:first-child {
+    margin-top: 15px;
+  }
+
+  .post {
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    border-radius: 5px;
+    margin-bottom: 12px;
+  }
+
+  .votes-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 12px;
+    background-color: #F8F8FB;
+  }
+  .votes-number {
+    font-size: 14px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+  }
+
+  .votes-icon {
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .posted-by-text {
+    font-size: 14px;
+    color: rgb(120, 124, 126);
+  }
+
+  .post-section {
+    padding: 5px;
+  }
+
+  .posted-username {
+    cursor: pointer;
+  }
+
+  .post-title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-top: 3px;
+  }
+
+  .post-text {
+    margin-top: 10px;
+    font-size: 15px;
+  }
+
+  .post-options {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 2px;
+    color: rgb(135, 138, 140);
+    cursor: pointer;
+  }
+
+  .post-option {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  .post-option:hover {
+    background-color: #DBE0E7;
+  }
+
+  .post-option:not(:first-child) {
+    margin-left: 10px;
+  }
+
+  .post-options-icon {
+    margin-right: 5px;
+  }
