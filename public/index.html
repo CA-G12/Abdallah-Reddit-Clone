@@ -23,36 +23,19 @@
                     <input type="text" autocomplete="off" name="search-input" id="search-input" class="search-input" placeholder="Search Reddit" >
                 </form>
             </div>
-            <div class="create-post">
-                <i class="fa-solid fa-plus plus-icon"></i>
-                <div class="create-post-text">Create Post</div>
+            <div class="log-in" id="login-button">
+                <div class="log-in-btn">Log in</div>
             </div>
-            <div class="user-info">
-                <div class="avatar">
-                    <img src="https://i.redd.it/snoovatar/avatars/e969e6fe-fa64-4766-8f21-31ca736ec420.png" alt="avatar" class="avatar-img">
-                </div>
-                <div class="user-name-box">
-                    <div class="user-name">Full Effort</div>
-                    <div class="karma"> <i class="fa-solid fa-award karma-icon"></i> GIGACHAD</div>
-                </div>
+
+            <div class="signup" id="signupbtn">
+                <div class="signup-btn">Sign Up</div>
             </div>
+           
         </div>
     </header>
     <main class="main">
         <div class="posts-section">
-            <div class="create-post-section">
-                <div class="avatar post-avatar">
-                    <img src="https://i.redd.it/snoovatar/avatars/e969e6fe-fa64-4766-8f21-31ca736ec420.png" alt="avatar" class="avatar-img">
-                </div>
-                <div class="search-bar create-post-bar">
-                    <i class="fa-solid fa-plus plus-icon"></i>
-                    <form class="search-form">
-                        <input type="text" autocomplete="off" name="create-post-input" id="create-post-input" class="create-post-input search-input" placeholder="Create Post" >
-                    </form>
-                </div>
-                <i class="fa-regular fa-image both-icons"></i>
-                <i class="fa-solid fa-link both-icons"></i>
-            </div>
+            
             <div class="feed-options-section">
                 <div class="option">
                     <i class="fa-solid fa-rocket option-icon"></i>
@@ -70,5 +53,55 @@
 
         </div>
     </main>
+
+    <div class="login-popup">
+        <div class="x"><i class="fa-solid fa-xmark"></i></div>
+        <div class="art-shape">
+            <img src="/img/jo.jpg" alt="art shape" class="art-shape-img">
+        </div>
+        <div class="login-details">
+            <div class="login-title">
+                Log in
+            </div>
+            <div class="login-description">
+                By continuing, you agree to our User Agreement and Privacy Policy.
+            </div>
+            <form class="login-form">
+                <input type="text" class="username-input" placeholder="USERNAME" id="login-username">
+                <input type="password" class="password-input" placeholder="PASSWORD" id="login-password">
+            </form>
+            <div class="login-button-unique">Log In</div>
+
+            <div class="new">New to Reddit? <span class="signup-redirection">Sign Up</span></a></div>
+        </div>
+    </div>
+
+    <div class="signup-popup">
+        <div class="x xsignup"><i class="fa-solid fa-xmark"></i></div>
+        <div class="art-shape">
+            <img src="/img/jo.jpg" alt="art shape" class="art-shape-img">
+        </div>
+        <div class="login-details">
+            <div class="login-title">
+                Sign up
+            </div>
+            <div class="login-description">
+                By continuing, you agree to our User Agreement and Privacy Policy.
+            </div>
+            <form class="signup-form">
+                <input type="text" class="signup-input" placeholder="USERNAME" name="username" id="username-input">
+                <input type="email" class="signup-input" placeholder="EMAIL" name="email" id="email-input">
+                <input type="password" class="signup-input" placeholder="PASSWORD" name="password" id="password-input">
+                <input type="password" class="signup-input" placeholder="CONFIRM PASSWORD" name="confirm-password" id="confirm-password-input">
+                <input type="text" class="signup-input" placeholder="PROFILE IMAGE" name="profile-img" id="profile-img-input">
+                <input type="text" class="signup-input" placeholder="BIO" name="bio" id="bio-input">
+            </form>
+            <div class="login-button-unique signup-button-unique">Sign Up</div>
+
+            <div class="new">Already a user? <span class="signup-redirection">Sign In</span></a></div>
+        </div>
+    </div>
+
+    <div class="background-gray"></div>
 </body>
 </html>

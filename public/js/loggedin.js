@@ -1,84 +1,6 @@
 const feed = document.querySelector('.feed');
-const loginBtn = document.querySelector('#login-button');
-const loginPopup = document.querySelector('.login-popup');
-const background = document.querySelector('.background-gray');
-const body = document.body;
-const x = document.querySelector('.x');;
-const xsignup = document.querySelector('.xsignup');;
-const signupBtn = document.querySelector('#signupbtn');
-const signupPopup = document.querySelector('.signup-popup');
-
-const signupBtnUnique = document.querySelector('.signup-button-unique');
-const loginBtnUnique = document.querySelector('.login-button-unique');
 
 window.scrollTo(0, 0);
-
-loginBtn.addEventListener('click', () => {
-    loginPopup.style.display = 'flex';
-    background.style.display = 'block';
-    window.scrollTo(0, 0);
-    body.style.overflow = 'hidden';
-})
-
-x.addEventListener('click', () => {
-    loginPopup.style.display = 'none';
-    background.style.display = 'none';
-    body.style.overflow = 'visible';
-})
-
-signupBtn.addEventListener('click', () => {
-    signupPopup.style.display = 'flex';
-    background.style.display = 'block';
-    window.scrollTo(0, 0);
-    body.style.overflow = 'hidden';
-})
-
-xsignup.addEventListener('click', () => {
-    signupPopup.style.display = 'none';
-    background.style.display = 'none';
-    body.style.overflow = 'visible';
-})
-
-signupBtnUnique.addEventListener('click', () => {
-    const usernameinput = document.getElementById('username-input').value;
-    const emailinput = document.getElementById('email-input').value;
-    const passwordinput = document.getElementById('password-input').value;
-    const confirmpasswordinput = document.getElementById('confirm-password-input').value;
-    const profileimginput = document.getElementById('profile-img-input').value;
-    const bioinput = document.getElementById('bio-input').value;
-
-    fetch('/signup', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json', },
-        'body': JSON.stringify({
-            usernameinput, emailinput, passwordinput, confirmpasswordinput, profileimginput, bioinput
-        })    
-    })
-    .then(alert('Clicked'))
-
-})
-
-loginBtnUnique.addEventListener('click', () => {
-    const loginusername = document.getElementById('login-username').value;
-    const loginpassword = document.getElementById('login-password').value;
-
-    fetch('/login', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json', },
-        'body': JSON.stringify({
-            loginusername, loginpassword
-        })    
-    })
-    .then(res => res.json())
-    .then(res => {
-        if (res === 'Logged In') {
-            window.location.href = '/page'
-        } else {
-            alert('Username or Password is Invalid')
-        }
-    })
-
-})
 
 const renderPosts = (data) => {
     data.forEach(element => {
@@ -204,4 +126,3 @@ fetch('/api/posts')
 .then(res => res.json())
 .then(res => renderPosts(res))
 .catch(err => console.log(err))
-

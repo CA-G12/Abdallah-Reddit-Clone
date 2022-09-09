@@ -1,5 +1,8 @@
 const router = require('express').Router();
 const {getAllPostsData, upVote, downVote, verifyVote, upVoteDatabase, downVoteDatabase} = require('../database/queries/index')
+const {join} = require('path');
+const signup = require('../controllers/signup');
+const login = require('../controllers/login');
 
 
 router.get('/api/posts', (req, res) => {
@@ -36,5 +39,14 @@ router.get('/downvote/:id', (req, res) => {
     })
     .catch(err => console.log(err))
 })
+
+router.get('/page', (req, res) => {
+    res.sendFile(join(__dirname, '..', '..', 'private', 'loggedin.html'))
+})
+
+router.post('/signup', signup)
+
+router.post('/login', login)
+
 
 module.exports = router

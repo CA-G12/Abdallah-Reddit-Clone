@@ -3,6 +3,7 @@ const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const {join} = require('path');
 const router = require('./router/router');
+const verifyTokens = require('../middlewares/verifyTokens');
 
 const app = express(); 
 
@@ -11,6 +12,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(compression()); 
 app.use(cookieParser());
 app.use(express.static(join(__dirname, '..', 'public')));
+app.use(verifyTokens)
 
 app.use(router);
 

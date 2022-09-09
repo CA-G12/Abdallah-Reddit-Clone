@@ -4,7 +4,9 @@ DROP TABLE IF EXISTS posts, comments, users, votes CASCADE;
 
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY, 
-    username VARCHAR(55) NOT NULL, 
+    username VARCHAR(55) NOT NULL,
+    password VARCHAR(500) NOT NULL,
+    email VARCHAR(500) NOT NULL, 
     profile_img TEXT NOT NULL, 
     bio VARCHAR(1000) NOT NULL
 );
@@ -38,7 +40,7 @@ CREATE TABLE votes (
     CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
-INSERT INTO users (username, profile_img, bio) VALUES ('Full Effort', 'google.com', 'my bio');
+INSERT INTO users (username, password, email, profile_img, bio) VALUES ('Full Effort', '123456', 'g@google.com', 'google.com', 'my bio');
 
 INSERT INTO posts (post_title, post_img, post_content, post_votes, user_id) 
 VALUES ('Everyone is lonley sometimes', '#', 'But I would walk a thousand miles to see you rise.', '40', 1);

@@ -1,7 +1,7 @@
 const connection = require("../config/connection");
 
-const getUserByUsername = (username) => {
+const loginQuery = (username) => {
     return connection.query('SELECT * FROM users WHERE username = $1', [username])
 }
 
-module.exports = getUserByUsername;
+module.exports = loginQuery;
