@@ -21,17 +21,20 @@ const signup = (req, res) => {
         .then(response => {
             if (response.rows[0]) {
                 throw Error('Username Already Exists')
+            } else {
+                becrypt.hash(passwordinput, 10, (err, hash) => {
+                    if (err) throw err;
+                    addUserQuery(usernameinput, hash, emailinput, profileimginput, bioinput)
+                    .then(res.json('Success'))
+                })
             }
         })
-        .catch(err => console.log(err))
+        .catch(err => res.json('Username Already Exists'))
     })
-    .then(result => {
-        becrypt.hash(passwordinput, 10, (err, hash) => {
-            if (err) throw err;
-            addUserQuery(usernameinput, hash, emailinput, profileimginput, bioinput)
-        })
-    })
-    .catch(err => console.log('error in validation ' + err))
+    .catch(err => {
+        console.log('Error: ' + err.message)
+        res.json('Error: ' + err.message)
+})
 }
 
 module.exports = signup;

@@ -59,8 +59,17 @@ signupBtnUnique.addEventListener('click', () => {
             usernameinput, emailinput, passwordinput, confirmpasswordinput, profileimginput, bioinput
         })    
     })
-    .then(window.location.href = '/');
-
+    .then(res => res.json())
+    .then(res => {
+        if (res === 'Username Already Exists') {
+            showError('Username Already Exists')
+        } else if (res.includes('Error:')) {
+            showError(res)
+        } else {
+            window.location.href = '/u'
+        }
+    })
+    .catch(err => showError('Error, Please Try Again Later'))
 })
 
 loginBtnUnique.addEventListener('click', () => {
@@ -79,7 +88,7 @@ loginBtnUnique.addEventListener('click', () => {
         if (res === 'Logged In') {
             window.location.href = '/u'
         } else {
-            alert('Username or Password is Invalid')
+            showError('Username or Password is Invalid')
         }
     })
 

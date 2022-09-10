@@ -11,5 +11,6 @@ const getUserById = require('./getUserById');
 const DateFromNow = require('./dateFromNow');
 const getNewPosts = require('./getNewPosts');
 const getUsername = require('./getUsername');
+const displayVotes = require('./displayVotes');
 
-module.exports = {login, signup, getPosts, upvote, downvote, privatePage, userVerification, logout, createPost, getUserById, DateFromNow, getNewPosts, getUsername}
+module.exports = {login, signup, getPosts, upvote, downvote, privatePage, userVerification, logout, createPost, getUserById, DateFromNow, getNewPosts, getUsername, displayVotes}

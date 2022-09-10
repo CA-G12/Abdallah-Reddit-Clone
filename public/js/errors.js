@@ -8,6 +8,7 @@ const showError = (errorMessage) => {
     message.classList.add('message');
 
     message.textContent = errorMessage;
+    errorDiv.style.zIndex = '99999999999999';
 
     errorDiv.appendChild(redLine);
     errorDiv.appendChild(message);

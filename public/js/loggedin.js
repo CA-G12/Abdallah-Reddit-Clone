@@ -107,6 +107,22 @@ const renderPosts = (data) => {
 
         postTitle.textContent = element.post_title;
         postText.textContent = element.post_content;
+
+        fetch(`/displayVotes/${element.post_id}`)
+        .then(res => res.json())
+        .then(res => {
+            if (!res[0]) {
+                downVote.style.color = 'black';
+                upVote.style.color = 'black';
+            } else if (res[0].vote_status === 'down') {
+                downVote.style.color = '#FF5700';
+            } else if (res[0].vote_status === 'up') {
+                upVote.style.color = '#FF5700';
+            } 
+        })
+        .catch(err => console.log(err))
+        
+
         
         
         postOption1Text.textContent = 'Comment';
@@ -114,14 +130,24 @@ const renderPosts = (data) => {
 
         upVote.addEventListener('click', (e) => {
             fetch(`/upvote/${element.post_id}`)
-            .then(window.location.href = '/u')
-            .catch(err => console.log(err))
+            .then(() => {
+                window.location.href = '/u'
+            })
+            .catch(err => {
+                console.log(err)
+                window.location.href = '/u'
+            })
         })
 
         downVote.addEventListener('click', (e) => {
             fetch(`/downvote/${element.post_id}`)
-            .then(window.location.href = '/u')
-            .catch(err => console.log(err))
+            .then(() => {
+                window.location.href = '/u'
+            })
+            .catch(err => {
+                console.log(err)
+                window.location.href = '/u'
+            })
         })
     
         /* Votes Section */
@@ -222,3 +248,4 @@ fetch('/getUsername')
     UsernamefromDatabase.textContent = res;
 })
 .catch(err => showError('Error In Fetching Usename'))
+
