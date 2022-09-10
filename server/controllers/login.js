@@ -9,13 +9,15 @@ const login = (req, res) => {
     .then(response => response.rows[0])
     .then(response => {
         becrypt.compare(loginpassword, response.password, (err, result) => {
-            if (err) console.log(err);
+            if (err) res.json('Error');
             if (result) {
                 jwt.sign({'isLogged': 'true', 'user_id': response.user_id}, 'reddit-clone-super-private-key-dont-hack-pls',
                  {expiresIn: '72h'}, (err, token) => {
                     res.cookie('token', token)
                     res.json('Logged In')
                  })
+            } else {
+                res.json('Error')
             }
         })
     })

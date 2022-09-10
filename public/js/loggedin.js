@@ -30,12 +30,13 @@ createPostBtn.addEventListener('click', (e) => {
 
     const postTitle = document.querySelector('.create-post-input-unique').value;
     const postContent = document.querySelector('.post-content-textarea').value;
+    const postImage = document.querySelector('.post-img-input').value;
 
     fetch('/create-post', {
         method: 'POST',
         headers: {'Content-Type': 'application/json', },
         'body': JSON.stringify({
-            postTitle, postContent
+            postTitle, postContent, postImage 
         })    
     })
     .then(window.location.href = '/u');
@@ -64,6 +65,7 @@ const renderPosts = (data) => {
         const postOption1Text = document.createElement('div');
         const postOption2Text = document.createElement('div');
         const postedByJust = document.createElement('span');
+        const postImage = document.createElement('img');
     
         post.classList.add('post');
         VotesSection.classList.add('votes-section');
@@ -88,11 +90,14 @@ const renderPosts = (data) => {
         postOption2Icon.classList.add('fa-regular', 'fa-bookmark', 'post-options-icon');
         postOption1Text.classList.add('post-options-text');
         postOption2Text.classList.add('post-options-text');
-    
+        postImage.classList.add('post-image-special');
+
         // Adding Content
     
         votesNumber.textContent = element.post_votes;
         postedByJust.textContent = 'Posted By ';
+        postImage.src = element.post_img;
+        postImage.alt = 'Couldn\'t Load Image';
 
         fetch(`/getUserById/${element.user_id}`)
         .then(res => res.json())
@@ -173,6 +178,8 @@ const renderPosts = (data) => {
         postContent.appendChild(postText);
     
         postSection.appendChild(postContent);
+
+        postSection.appendChild(postImage);
     
         postOption1.appendChild(postOption1Icon);
         postOption1.appendChild(postOption1Text);

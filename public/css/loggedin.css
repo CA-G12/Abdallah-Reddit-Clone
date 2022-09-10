@@ -432,3 +432,23 @@
     .create-post-form > * {
       margin-bottom: 5px;
     }
+
+    .post-image-special {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      width: 100%;
+      max-height: 600px;
+      object-fit: contain;
+    }
+
+    .post-img-input {
+      all: unset;
+      border: 1px solid black;
+      width: 90%;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 20px;
+      font-weight: 500;  
+      margin-bottom: 15px;
+    }

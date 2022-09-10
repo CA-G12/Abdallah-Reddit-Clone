@@ -9,10 +9,10 @@ const createPost = (req, res) => {
             res.clearCookie('token')
             res.json('Not Authorized');
         } else {
-            const {postTitle, postContent} = req.body;
+            const {postTitle, postContent, postImage} = req.body;
             const user_id = decoded.user_id;
             const post_date = new Date();
-            addPostQuery(postTitle, postContent, user_id, post_date)
+            addPostQuery(postTitle, postImage, postContent, user_id, post_date)
             .then(res.json('Success'))
         }
     })    
