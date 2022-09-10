@@ -40,7 +40,7 @@ CREATE TABLE votes (
     CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
-INSERT INTO users (username, password, email, profile_img, bio) VALUES ('Full Effort', '123456', 'g@google.com', 'google.com', 'my bio');
+INSERT INTO users (username, password, email, profile_img, bio) VALUES ('full-effort', '123456', 'g@google.com', 'google.com', 'my bio');
 
 INSERT INTO posts (post_title, post_img, post_content, post_votes, user_id) 
 VALUES ('Everyone is lonley sometimes', '#', 'But I would walk a thousand miles to see you rise.', '40', 1);

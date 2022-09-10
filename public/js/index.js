@@ -202,6 +202,12 @@ const renderPosts = (data) => {
 
 fetch('/api/posts')
 .then(res => res.json())
-.then(res => renderPosts(res))
-.catch(err => console.log(err))
+.then(res => {
+    if (res === 'Error') {
+        throw new Error
+    } else {
+        renderPosts(res)
+    }
+})
+.catch(err => showError('Could Not Load Posts - Try Reloading The Page'))
 
