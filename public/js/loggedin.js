@@ -9,6 +9,8 @@ const createpostInput = document.querySelector('#create-post-input-looks');
 const newPostsButton = document.querySelector('#new-posts-button');
 const bestPostsButton = document.querySelector('#best-posts-button');
 
+const UsernamefromDatabase = document.querySelector('#username-from-database');
+
 window.scrollTo(0, 0);
 
 createPostPopUpBtn.addEventListener('click', () => {
@@ -38,9 +40,6 @@ createPostBtn.addEventListener('click', (e) => {
     })
     .then(window.location.href = '/u');
 })
-
-
-
 
 const renderPosts = (data) => {
     data.forEach(element => {
@@ -98,14 +97,12 @@ const renderPosts = (data) => {
         fetch(`/getUserById/${element.user_id}`)
         .then(res => res.json())
         .then(res => postedUsername.textContent = res.username + " ")
-        .then(res => console.log(res))
 
         postedTime.textContent = element.post_date;
 
         fetch(`/fromnow/${element.post_date}`)
         .then(res => res.json())
         .then(res => postedTime.textContent = res)
-        .then(res => console.log(res))
         
 
         postTitle.textContent = element.post_title;
@@ -218,3 +215,10 @@ bestPostsButton.addEventListener('click', () => {
     .catch(err => showError('Could Not Load Posts - Try Reloading The Page'))
 
 })
+
+fetch('/getUsername')
+.then(res => res.json())
+.then(res => {
+    UsernamefromDatabase.textContent = res;
+})
+.catch(err => showError('Error In Fetching Usename'))

@@ -10,5 +10,6 @@ const createPost = require('./create-post');
 const getUserById = require('./getUserById');
 const DateFromNow = require('./dateFromNow');
 const getNewPosts = require('./getNewPosts');
+const getUsername = require('./getUsername');
 
-module.exports = {login, signup, getPosts, upvote, downvote, privatePage, userVerification, logout, createPost, getUserById, DateFromNow, getNewPosts}
+module.exports = {login, signup, getPosts, upvote, downvote, privatePage, userVerification, logout, createPost, getUserById, DateFromNow, getNewPosts, getUsername}

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {login, signup, getPosts, getNewPosts, upvote, downvote, privatePage, userVerification, logout, createPost, getUserById, DateFromNow} = require('../controllers/')
+const {login, signup, getPosts, getNewPosts, upvote, downvote, privatePage, userVerification, logout, createPost, getUserById, DateFromNow, getUsername} = require('../controllers/')
 
 router.get('/api/posts', getPosts)
 
@@ -24,6 +24,8 @@ router.get('/userVerification', userVerification)
 router.get('/getUserById/:id', getUserById)
 
 router.get('/fromnow/:date', DateFromNow)
+
+router.get('/getUsername', getUsername)
 
 
 

@@ -136,11 +136,18 @@ const renderPosts = (data) => {
         // Adding Content
     
         votesNumber.textContent = element.post_votes;
-        postedByJust.textContent = 'Posted By '
-        postedUsername.textContent = 'Eminem ';
-        postedTime.textContent = '15 Minutes Ago';
-        
+        postedByJust.textContent = 'Posted By ';
 
+        fetch(`/getUserById/${element.user_id}`)
+        .then(res => res.json())
+        .then(res => postedUsername.textContent = res.username + " ")
+
+        postedTime.textContent = element.post_date;
+
+        fetch(`/fromnow/${element.post_date}`)
+        .then(res => res.json())
+        .then(res => postedTime.textContent = res)
+        
         postTitle.textContent = element.post_title;
         postText.textContent = element.post_content;
         
