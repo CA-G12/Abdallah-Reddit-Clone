@@ -16,6 +16,6 @@ const showError = (errorMessage) => {
 
     setTimeout(() => {
         body.removeChild(errorDiv);
-    }, 5000);
+    }, 2000);
 }
 

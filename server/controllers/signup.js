@@ -1,7 +1,7 @@
 const joi = require('joi');
 const becrypt = require('bcrypt');
 const addUserQuery = require('../database/queries/signupQuery')
-const getUserByUsername = require('../database/queries/getUserData');
+const {getUserByUsername} = require('../database/queries/getUserData');
 
 const signup = (req, res) => {
     const {usernameinput, emailinput, passwordinput, confirmpasswordinput, profileimginput, bioinput} = req.body;

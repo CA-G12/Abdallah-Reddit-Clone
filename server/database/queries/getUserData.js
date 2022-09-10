@@ -4,4 +4,9 @@ const getUserByUsername = (username) => {
     return connection.query('SELECT * FROM users WHERE username = $1', [username])
 }
 
-module.exports = getUserByUsername;
+const getUserByIdQuery = (id) => {
+    return connection.query('SELECT username FROM users WHERE user_id = $1', [id])
+}
+
+
+module.exports = {getUserByUsername, getUserByIdQuery};

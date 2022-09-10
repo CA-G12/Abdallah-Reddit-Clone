@@ -7,6 +7,7 @@
     <title>Reddit || Social Media Website</title>
     <link rel="stylesheet" href="/css/loggedin.css">
     <script src="https://kit.fontawesome.com/15ec354c0f.js" crossorigin="anonymous"></script>
+    <script src="/js/errors.js" defer></script>
     <script src="/js/loggedin.js" defer></script>
     <link rel="shortcut icon" href="https://i.ibb.co/hmVNKk2/reddit.png" type="image/x-icon">
 </head>
@@ -36,6 +37,7 @@
                     <div class="karma"> <i class="fa-solid fa-award karma-icon"></i> GIGACHAD</div>
                 </div>
             </div>
+            <div class="logout-btn">Log Out</div>
         </div>
     </header>
     <main class="main">
@@ -47,18 +49,18 @@
                 <div class="search-bar create-post-bar">
                     <i class="fa-solid fa-plus plus-icon"></i>
                     <form class="search-form">
-                        <input type="text" autocomplete="off" name="create-post-input" id="create-post-input" class="create-post-input search-input" placeholder="Create Post" >
+                        <input type="text" autocomplete="off" name="create-post-input" id="create-post-input-looks" class="create-post-input search-input" placeholder="Create Post" >
                     </form>
                 </div>
                 <i class="fa-regular fa-image both-icons"></i>
                 <i class="fa-solid fa-link both-icons"></i>
             </div>
             <div class="feed-options-section">
-                <div class="option">
+                <div class="option" id="best-posts-button">
                     <i class="fa-solid fa-rocket option-icon"></i>
                     <div class="option-text">Best</div>
                 </div>
-                <div class="option">
+                <div class="option" id="new-posts-button">
                     <i class="fa-regular fa-sun option-icon"></i>
                     <div class="option-text">New</div>
                 </div>
@@ -70,5 +72,17 @@
 
         </div>
     </main>
+
+    <div class="create-post-popup">
+        <div class="xpost"><i class="fa-solid fa-xmark"></i></div>
+        <h1 class="create-post-title">Create Post</h1>
+        <form class="create-post-form">
+            <label for="post-title-input">Post Title</label>
+            <input type="text" name="post-title-input" id="post-title-input" class="create-post-input-unique" placeholder="Title" autocomplete="off">
+            <label for="post-content-input">Post Content</label> 
+            <textarea name="post-content-input" id="post-content-input" class="post-content-textarea" cols="50" rows="7" placeholder="Content"></textarea>
+            <button class="create-post-button">Create Post</button>
+        </form>
+    </div>
 </body>
 </html>

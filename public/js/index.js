@@ -7,11 +7,16 @@ const x = document.querySelector('.x');;
 const xsignup = document.querySelector('.xsignup');;
 const signupBtn = document.querySelector('#signupbtn');
 const signupPopup = document.querySelector('.signup-popup');
+const newPostsButton = document.querySelector('#new-posts-button');
+const bestPostsButton = document.querySelector('#best-posts-button');
+
 
 const signupBtnUnique = document.querySelector('.signup-button-unique');
 const loginBtnUnique = document.querySelector('.login-button-unique');
 
 window.scrollTo(0, 0);
+
+
 
 loginBtn.addEventListener('click', () => {
     loginPopup.style.display = 'flex';
@@ -54,7 +59,7 @@ signupBtnUnique.addEventListener('click', () => {
             usernameinput, emailinput, passwordinput, confirmpasswordinput, profileimginput, bioinput
         })    
     })
-    .then(alert('Clicked'))
+    .then(window.location.href = '/');
 
 })
 
@@ -72,7 +77,7 @@ loginBtnUnique.addEventListener('click', () => {
     .then(res => res.json())
     .then(res => {
         if (res === 'Logged In') {
-            window.location.href = '/page'
+            window.location.href = '/u'
         } else {
             alert('Username or Password is Invalid')
         }
@@ -144,15 +149,11 @@ const renderPosts = (data) => {
         postOption2Text.textContent = 'Save';
 
         upVote.addEventListener('click', (e) => {
-            fetch(`/upvote/${element.post_id}`)
-            .then(window.location.href = '/page')
-            .catch(err => console.log(err))
+            showError('You Need To Be Logged In To Vote')
         })
 
         downVote.addEventListener('click', (e) => {
-            fetch(`/downvote/${element.post_id}`)
-            .then(window.location.href = '/page')
-            .catch(err => console.log(err))
+            showError('You Need To Be Logged In To Vote')
         })
     
         /* Votes Section */
@@ -211,3 +212,41 @@ fetch('/api/posts')
 })
 .catch(err => showError('Could Not Load Posts - Try Reloading The Page'))
 
+fetch('/userVerification')
+.then(res => res.json())
+.then(res => {
+    if (res === 'Authorized') {
+        window.location.href = '/u'
+    }
+})
+
+newPostsButton.addEventListener('click', () => {
+    feed.textContent = '';
+    fetch('/api/newposts')
+    .then(res => res.json())
+    .then(res => {
+        if (res === 'Error') {
+            throw new Error
+        } else {
+            renderPosts(res)
+        }
+    })
+    .catch(err => showError('Could Not Load Posts - Try Reloading The Page'))
+
+})
+
+bestPostsButton.addEventListener('click', () => {
+    feed.textContent = '';
+
+    fetch('/api/posts')
+    .then(res => res.json())
+    .then(res => {
+        if (res === 'Error') {
+            throw new Error
+        } else {
+            renderPosts(res)
+        }
+    })
+    .catch(err => showError('Could Not Load Posts - Try Reloading The Page'))
+
+})

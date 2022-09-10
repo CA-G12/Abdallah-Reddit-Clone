@@ -16,7 +16,7 @@
 
   }
 
-  input, button, a {
+  input, button, a,textarea {
     font-family: inherit;
   }
 
@@ -139,7 +139,6 @@
   .main {
     display: flex;
     justify-content: center;
-    align-items: center;
     margin-top: 85px;
     height: 100%;
   }
@@ -295,3 +294,141 @@
   .post-options-icon {
     margin-right: 5px;
   }
+
+  
+    /* Error Message */
+
+    .error-div {
+      position: fixed;
+      top: 15%;
+      left: 50%;
+      transform: translate(-50%, -15%);
+      background-color: white;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      padding: 10px;
+      border-radius: 10px;
+      overflow: hidden;
+      
+    }
+
+    .red-line {
+      width: 10%;
+      height: 100%;
+      background-color: red;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .message {
+      margin-left: 10%;
+      font-weight: 600;
+    }
+
+    /* Log out */
+
+    .logout-btn {
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 5px;
+      margin-left: 20px;
+    }
+
+    .logout-btn:hover {
+      background-color: rgba(26,26,27,0.1);
+    }
+
+    /* Create Post Pop Up */
+
+    .create-post-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      padding: 10px;
+      border-radius: 10px;
+      display: none;
+      flex-direction: column;
+      width: 60%;
+      padding-left: 20px;
+
+    }
+
+    .create-post-title {
+      text-align: center;
+    }
+
+    .create-post-form {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      font-size: 20px;
+    }
+
+    .create-post-input-unique {
+      all: unset;
+      border: 1px solid black;
+      width: 90%;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 20px;
+      font-weight: 500;
+    
+    }
+
+    .xpost {
+      position: fixed;
+      top: 2%;
+      right: 3%;
+      font-size: 20px;
+      z-index: 9999999999;
+      cursor: pointer;
+    }
+
+    .xpost:hover {
+      opacity: 0.6;
+    }
+
+    .create-post-button {
+      all: unset;
+      align-self: center;
+      font-size: 26px;
+      border: 1px solid black;
+      padding: 10px;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: all .2s;
+    }
+    
+    .create-post-button:hover {
+      color: rgb(78, 76, 76);
+    }
+    
+    .create-post-button:active {
+      color: black;
+      
+    }
+
+    .post-content-textarea {
+      all: unset;
+      border: 1px solid black;
+      padding: 10px;
+      font-weight: 500;
+      border-radius: 5px;
+      width: 90%;
+      height: 30%;
+      margin-bottom: 10px;
+    }
+
+    .create-post-form label {
+      font-size: 23px;
+      font-weight: 600;
+    }
+
+    .create-post-form > * {
+      margin-bottom: 5px;
+    }

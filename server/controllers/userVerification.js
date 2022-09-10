@@ -1,19 +1,18 @@
-const {join} = require('path');
 const jwt = require('jsonwebtoken');
 
-const privatePage = (req, res) => {
+const userVerification = (req, res, next) => {
     if (req.cookies.token) {
         jwt.verify(req.cookies.token, 'reddit-clone-super-private-key-dont-hack-pls', (err, decoded) => {
             if (err) {
                 res.clearCookie('token')
-                res.redirect('/')
+                res.json('Not Authorized');
             } else {
-                res.sendFile(join(__dirname, '..', '..', 'private', 'loggedin.html'))
+                res.json('Authorized')
             }
         })    
     } else {
-        res.redirect('/')
+        res.json('Not Authorized');
     }
 }
 
-module.exports = privatePage;
+module.exports = userVerification;

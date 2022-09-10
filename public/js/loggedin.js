@@ -1,6 +1,46 @@
 const feed = document.querySelector('.feed');
+const body = document.body;
+const logoutbtn = document.querySelector('.logout-btn')
+const createPostPopUpBtn = document.querySelector('.create-post');
+const createPostPopUp = document.querySelector('.create-post-popup');
+const xpost = document.querySelector('.xpost');
+const createPostBtn = document.querySelector('.create-post-button');
+const createpostInput = document.querySelector('#create-post-input-looks');
+const newPostsButton = document.querySelector('#new-posts-button');
+const bestPostsButton = document.querySelector('#best-posts-button');
 
 window.scrollTo(0, 0);
+
+createPostPopUpBtn.addEventListener('click', () => {
+    createPostPopUp.style.display = 'flex';
+})
+
+createpostInput.addEventListener('focus', () => {
+    createPostPopUp.style.display = 'flex';
+})
+
+xpost.addEventListener('click', () => {
+    createPostPopUp.style.display = 'none';
+})
+
+createPostBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const postTitle = document.querySelector('.create-post-input-unique').value;
+    const postContent = document.querySelector('.post-content-textarea').value;
+
+    fetch('/create-post', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json', },
+        'body': JSON.stringify({
+            postTitle, postContent
+        })    
+    })
+    .then(window.location.href = '/u');
+})
+
+
+
 
 const renderPosts = (data) => {
     data.forEach(element => {
@@ -53,9 +93,19 @@ const renderPosts = (data) => {
         // Adding Content
     
         votesNumber.textContent = element.post_votes;
-        postedByJust.textContent = 'Posted By '
-        postedUsername.textContent = 'Eminem ';
-        postedTime.textContent = '15 Minutes Ago';
+        postedByJust.textContent = 'Posted By ';
+
+        fetch(`/getUserById/${element.user_id}`)
+        .then(res => res.json())
+        .then(res => postedUsername.textContent = res.username + " ")
+        .then(res => console.log(res))
+
+        postedTime.textContent = element.post_date;
+
+        fetch(`/fromnow/${element.post_date}`)
+        .then(res => res.json())
+        .then(res => postedTime.textContent = res)
+        .then(res => console.log(res))
         
 
         postTitle.textContent = element.post_title;
@@ -67,13 +117,13 @@ const renderPosts = (data) => {
 
         upVote.addEventListener('click', (e) => {
             fetch(`/upvote/${element.post_id}`)
-            .then(window.location.href = '/page')
+            .then(window.location.href = '/u')
             .catch(err => console.log(err))
         })
 
         downVote.addEventListener('click', (e) => {
             fetch(`/downvote/${element.post_id}`)
-            .then(window.location.href = '/page')
+            .then(window.location.href = '/u')
             .catch(err => console.log(err))
         })
     
@@ -121,8 +171,50 @@ const renderPosts = (data) => {
     })
 }
 
+logoutbtn.addEventListener('click', () => {
+    fetch('/logout')
+    .then(window.location.href = '/')
+})
+
 
 fetch('/api/posts')
 .then(res => res.json())
-.then(res => renderPosts(res))
-.catch(err => console.log(err))
+.then(res => {
+    if (res === 'Error') {
+        throw new Error
+    } else {
+        renderPosts(res)
+    }
+})
+.catch(err => showError('Could Not Load Posts - Try Reloading The Page'))
+
+newPostsButton.addEventListener('click', () => {
+    feed.textContent = '';
+    fetch('/api/newposts')
+    .then(res => res.json())
+    .then(res => {
+        if (res === 'Error') {
+            throw new Error
+        } else {
+            renderPosts(res)
+        }
+    })
+    .catch(err => showError('Could Not Load Posts - Try Reloading The Page'))
+
+})
+
+bestPostsButton.addEventListener('click', () => {
+    feed.textContent = '';
+
+    fetch('/api/posts')
+    .then(res => res.json())
+    .then(res => {
+        if (res === 'Error') {
+            throw new Error
+        } else {
+            renderPosts(res)
+        }
+    })
+    .catch(err => showError('Could Not Load Posts - Try Reloading The Page'))
+
+})
