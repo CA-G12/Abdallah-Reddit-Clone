@@ -9,6 +9,10 @@ const createpostInput = document.querySelector('#create-post-input-looks');
 const newPostsButton = document.querySelector('#new-posts-button');
 const bestPostsButton = document.querySelector('#best-posts-button');
 
+const searchInput = document.querySelector('#search-input');
+const searchForm = document.querySelector('.search-form');
+
+
 const UsernamefromDatabase = document.querySelector('#username-from-database');
 
 window.scrollTo(0, 0);
@@ -248,6 +252,30 @@ bestPostsButton.addEventListener('click', () => {
     .catch(err => showError('Could Not Load Posts - Try Reloading The Page'))
 
 })
+
+searchInput.addEventListener('input', (e) => {
+    const NewsearchInput = document.querySelector('#search-input');
+    feed.textContent = '';
+
+    fetch('/api/posts')
+    .then(res => res.json())
+    .then(res => {
+        newRes = res.filter(e => {
+            return e.post_title.includes(NewsearchInput.value) || e.post_content.includes(NewsearchInput.value);
+        })
+        return newRes
+    })
+    .then(res => {
+        if (res === 'Error') {
+            throw new Error
+        } else {
+            renderPosts(res)
+        }
+    })
+    .catch(err => console.log(err))
+
+})
+
 
 fetch('/getUsername')
 .then(res => res.json())

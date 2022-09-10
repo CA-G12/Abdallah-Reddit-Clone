@@ -13,6 +13,8 @@ const bestPostsButton = document.querySelector('#best-posts-button');
 
 const signupBtnUnique = document.querySelector('.signup-button-unique');
 const loginBtnUnique = document.querySelector('.login-button-unique');
+const searchInput = document.querySelector('#search-input');
+const searchForm = document.querySelector('.search-form');
 
 window.scrollTo(0, 0);
 
@@ -276,5 +278,28 @@ bestPostsButton.addEventListener('click', () => {
         }
     })
     .catch(err => showError('Could Not Load Posts - Try Reloading The Page'))
+
+})
+
+searchInput.addEventListener('input', (e) => {
+    const NewsearchInput = document.querySelector('#search-input');
+    feed.textContent = '';
+
+    fetch('/api/posts')
+    .then(res => res.json())
+    .then(res => {
+        newRes = res.filter(e => {
+            return e.post_title.includes(NewsearchInput.value) || e.post_content.includes(NewsearchInput.value);
+        })
+        return newRes
+    })
+    .then(res => {
+        if (res === 'Error') {
+            throw new Error
+        } else {
+            renderPosts(res)
+        }
+    })
+    .catch(err => console.log(err))
 
 })
